@@ -1,1336 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Fazil T - Professional Portfolio</title>
-    <meta name="description" content="Mohammed Fazil T - Software Engineer specializing in Java, Spring Boot, Microservices, and Cloud Architecture. 2+ years of experience building scalable backend systems.">
-    <meta name="keywords" content="Mohammed Fazil T, Software Engineer, Java Developer, Spring Boot, Backend Engineer, Microservices, AWS, Kafka, Redis">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <!-- EmailJS SDK (Alternative method) -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #60a5fa;
-            --primary-bright: #93c5fd;
-            --accent: #a78bfa;
-            --accent-bright: #c4b5fd;
-            --cyan: #22d3ee;
-            --emerald: #34d399;
-            --rose: #fb7185;
-            --amber: #fbbf24;
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #16161f;
-            --bg-card-hover: #1c1c28;
-            --bg-elevated: #1e1e2a;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --border: rgba(148, 163, 184, 0.08);
-            --border-hover: rgba(96, 165, 250, 0.3);
-            --glass: rgba(22, 22, 31, 0.7);
-            --glass-border: rgba(148, 163, 184, 0.06);
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: var(--bg-primary);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Scroll Progress Bar */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--cyan));
-            z-index: 10001;
-            transition: width 0.1s linear;
-            border-radius: 0 2px 2px 0;
-        }
-
-        /* ===== NAVIGATION ===== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 1rem 0;
-        }
-
-        .navbar.scrolled {
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid var(--border);
-            padding: 0.6rem 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .logo-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--emerald);
-            border-radius: 50%;
-            animation: pulse-dot 2s ease-in-out infinite;
-            box-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(0.8); }
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 0.875rem;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--text-primary);
-            background: rgba(96, 165, 250, 0.08);
-        }
-
-        .nav-link.active {
-            color: var(--primary);
-        }
-
-        .nav-cta {
-            background: rgba(96, 165, 250, 0.12);
-            color: var(--primary) !important;
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            font-weight: 600;
-            margin-left: 0.5rem;
-        }
-
-        .nav-cta:hover {
-            background: rgba(96, 165, 250, 0.2) !important;
-            border-color: rgba(96, 165, 250, 0.4);
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 5px;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background: var(--text-primary);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding: 8rem 0 6rem;
-        }
-
-        #particles-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .hero-gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.15;
-            z-index: 0;
-        }
-
-        .hero-gradient-orb.orb-1 {
-            width: 600px;
-            height: 600px;
-            background: var(--primary);
-            top: -200px;
-            right: -100px;
-            animation: float-orb 15s ease-in-out infinite;
-        }
-
-        .hero-gradient-orb.orb-2 {
-            width: 500px;
-            height: 500px;
-            background: var(--accent);
-            bottom: -150px;
-            left: -100px;
-            animation: float-orb 20s ease-in-out infinite reverse;
-        }
-
-        .hero-gradient-orb.orb-3 {
-            width: 300px;
-            height: 300px;
-            background: var(--cyan);
-            top: 40%;
-            left: 50%;
-            animation: float-orb 12s ease-in-out infinite 3s;
-        }
-
-        @keyframes float-orb {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(30px, -30px); }
-            66% { transform: translate(-20px, 20px); }
-        }
-
-        .hero .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .hero-content {
-            max-width: 720px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 1rem;
-            background: rgba(52, 211, 153, 0.1);
-            border: 1px solid rgba(52, 211, 153, 0.2);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--emerald);
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease both;
-        }
-
-        .hero-badge .badge-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--emerald);
-            border-radius: 50%;
-            animation: pulse-dot 2s ease-in-out infinite;
-        }
-
-        .hero h1 {
-            font-family: 'Sora', sans-serif;
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease 0.1s both;
-        }
-
-        .hero h1 .gradient-text {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .subtitle {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .hero .description {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            animation: fadeInUp 0.8s ease 0.3s both;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.8rem;
-            background: var(--primary);
-            color: var(--bg-primary);
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-bright);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(96, 165, 250, 0.3);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.8rem;
-            background: transparent;
-            color: var(--text-primary);
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--border-hover);
-            background: rgba(96, 165, 250, 0.05);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Stats */
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 4rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid var(--border);
-            animation: fadeInUp 0.8s ease 0.5s both;
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat .stat-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.2;
-        }
-
-        .hero-stat .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 0.2rem;
-        }
-
-        /* ===== SECTIONS ===== */
-        .section {
-            padding: 7rem 0;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-
-        .section-label::before {
-            content: '';
-            width: 20px;
-            height: 2px;
-            background: var(--primary);
-            border-radius: 1px;
-        }
-
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            color: var(--text-primary);
-        }
-
-        .section-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            margin-top: 1rem;
-            max-width: 550px;
-            line-height: 1.7;
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .about-text p {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-        }
-
-        .skill-item {
-            background: var(--bg-card);
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--border);
-            cursor: default;
-        }
-
-        .skill-item:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .skill-item i {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .skill-item:nth-child(1) i { color: var(--rose); }
-        .skill-item:nth-child(2) i { color: var(--primary); }
-        .skill-item:nth-child(3) i { color: var(--cyan); }
-        .skill-item:nth-child(4) i { color: var(--primary); }
-        .skill-item:nth-child(5) i { color: var(--rose); }
-        .skill-item:nth-child(6) i { color: var(--accent); }
-        .skill-item:nth-child(7) i { color: var(--emerald); }
-        .skill-item:nth-child(8) i { color: var(--cyan); }
-        .skill-item:nth-child(9) i { color: var(--amber); }
-        .skill-item:nth-child(10) i { color: var(--emerald); }
-        .skill-item:nth-child(11) i { color: var(--accent); }
-        .skill-item:nth-child(12) i { color: var(--amber); }
-
-        .skill-item p {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            margin: 0;
-        }
-
-        /* ===== EXPERIENCE SECTION ===== */
-        .experience {
-            background: var(--bg-primary);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding-left: 3rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--primary), var(--accent), var(--cyan));
-            border-radius: 1px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3.5rem;
-            padding-left: 1rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -3.35rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--bg-primary);
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 0 4px var(--bg-primary), 0 0 15px rgba(96, 165, 250, 0.3);
-            z-index: 2;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover::before {
-            background: var(--primary);
-            box-shadow: 0 0 0 4px var(--bg-primary), 0 0 25px rgba(96, 165, 250, 0.5);
-        }
-
-        .timeline-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-content {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .timeline-content:hover {
-            border-color: var(--border-hover);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .timeline-content h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            color: var(--text-primary);
-        }
-
-        .timeline-content h4 {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-
-        .timeline-content p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .timeline-content ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .timeline-content ul li {
-            position: relative;
-            padding-left: 1.2rem;
-            margin-bottom: 0.6rem;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .timeline-content ul li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.6rem;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-
-        /* ===== CERTIFICATIONS SECTION ===== */
-        .certifications {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-        }
-
-        .cert-card {
-            background: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 0.75rem;
-        }
-
-        .cert-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .cert-card i {
-            font-size: 2rem;
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 14px;
-        }
-
-        .cert-card:nth-child(1) i { color: var(--rose); background: rgba(251, 113, 133, 0.1); }
-        .cert-card:nth-child(2) i { color: var(--primary); background: rgba(96, 165, 250, 0.1); }
-        .cert-card:nth-child(3) i { color: var(--accent); background: rgba(167, 139, 250, 0.1); }
-        .cert-card:nth-child(4) i { color: var(--cyan); background: rgba(34, 211, 238, 0.1); }
-        .cert-card:nth-child(5) i { color: var(--emerald); background: rgba(52, 211, 153, 0.1); }
-
-        .cert-card h4 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-        }
-
-        .cert-card p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        /* ===== PROJECTS SECTION ===== */
-        .projects {
-            background: var(--bg-primary);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .project-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .project-image {
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 20px;
-            transition: transform 0.4s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-        }
-
-        .project-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background: linear-gradient(transparent, var(--bg-card));
-        }
-
-        .project-content {
-            padding: 1.5rem 2rem 2rem;
-        }
-
-        .project-content h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-
-        .project-content p {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.7;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 0.4rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.2rem;
-        }
-
-        .tag {
-            padding: 0.3rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            font-family: 'JetBrains Mono', monospace;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            background: rgba(148, 163, 184, 0.05);
-            transition: all 0.2s ease;
-        }
-
-        .tag:hover {
-            border-color: var(--border-hover);
-            color: var(--primary);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .project-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .project-link:hover {
-            color: var(--primary);
-        }
-
-        /* ===== CONTACT SECTION ===== */
-        .contact {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .contact-info > p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.2rem;
-            padding: 1rem 1.2rem;
-            background: var(--bg-card);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-        }
-
-        .contact-item i {
-            font-size: 1.1rem;
-            margin-right: 1rem;
-            width: 20px;
-            color: var(--primary);
-        }
-
-        .contact-item span {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-        }
-
-        .contact-form {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 18px;
-            border: 1px solid var(--border);
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.9rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 0.92rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--text-muted);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: var(--primary);
-            color: var(--bg-primary);
-            border: none;
-            padding: 0.9rem 2rem;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .submit-btn:hover {
-            background: var(--primary-bright);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(96, 165, 250, 0.3);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .form-status {
-            margin-top: 1rem;
-            padding: 0.8rem 1rem;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.88rem;
-            display: none;
-        }
-
-        .form-status.success {
-            background: rgba(52, 211, 153, 0.1);
-            border: 1px solid rgba(52, 211, 153, 0.2);
-            color: var(--emerald);
-        }
-
-        .form-status.error {
-            background: rgba(251, 113, 133, 0.1);
-            border: 1px solid rgba(251, 113, 133, 0.2);
-            color: var(--rose);
-        }
-
-        .form-status.info {
-            background: rgba(96, 165, 250, 0.1);
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            color: var(--primary);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--bg-primary);
-            border-top: 1px solid var(--border);
-            padding: 3rem 0 2rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .footer-left p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            border-color: var(--border-hover);
-            color: var(--primary);
-            background: rgba(96, 165, 250, 0.08);
-            transform: translateY(-3px);
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--bg-elevated);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-muted);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
-                background: rgba(10, 10, 15, 0.98);
-                backdrop-filter: blur(30px);
-                -webkit-backdrop-filter: blur(30px);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 0.5rem;
-                padding: 2rem;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                border-left: 1px solid var(--border);
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-link {
-                font-size: 1.1rem;
-                padding: 0.8rem 1.5rem;
-                width: 100%;
-                text-align: center;
-            }
-
-            .hero-content {
-                max-width: 100%;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-stats {
-                gap: 2rem;
-                flex-wrap: wrap;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline {
-                padding-left: 2rem;
-            }
-
-            .timeline-item::before {
-                left: -2.35rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .section {
-                padding: 5rem 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero-stats {
-                gap: 1.5rem;
-            }
-
-            .hero-stat .stat-number {
-                font-size: 1.5rem;
-            }
-
-            .nav-cta {
-                margin-left: 0;
-            }
-        }
-
-        /* Overlay for mobile menu */
-        .nav-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-    </style>
+    <title>Mohammed Fazil T - Java Spring Boot Developer</title>
+    <meta name="description" content="Backend Developer with 2+ years of expertise in Java, Spring Boot, Microservices, and Cloud Architecture. Building scalable financial systems with high-performance APIs.">
+    <meta name="keywords" content="Backend Engineer, Java Spring Boot Developer, Spring Boot, Microservices, Cloud Architecture, REST APIs, Kafka, Redis, AWS">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' font-weight='bold' fill='%233b82f6'>M</text></svg>">
+    
+    <!-- Fonts - Inter for modern premium look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
     <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <div class="gradient-orb gradient-orb-1"></div>
+        <div class="gradient-orb gradient-orb-2"></div>
+        <div class="gradient-orb gradient-orb-3"></div>
+        <div class="grid-overlay"></div>
+        <div class="noise-overlay"></div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <span class="logo-dot"></span>
-                Mohammed Fazil T
-            </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#certifications" class="nav-link">Certifications</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link nav-cta">Contact</a></li>
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+                <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#contact" class="nav-link nav-cta" data-section="contact">
+                    <span>Contact</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a></li>
             </ul>
+            
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
     <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <canvas id="particles-canvas"></canvas>
-        <div class="hero-gradient-orb orb-1"></div>
-        <div class="hero-gradient-orb orb-2"></div>
-        <div class="hero-gradient-orb orb-3"></div>
-
-        <div class="container">
+        <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">
+                <!-- Availability Badge -->
+                <div class="hero-badge reveal-up">
                     <span class="badge-dot"></span>
-                    Available for opportunities
+                    <span>Available for opportunities</span>
                 </div>
-                <h1>Mohammed Fazil T<br><span class="gradient-text">Software Engineer</span></h1>
-                <p class="subtitle">Software Engineer | Java & Spring Boot Developer | Backend Engineer</p>
-                <p class="description">Passionate Java and Spring Boot Developer with 2+ years of experience building
-                    scalable, high-performance backend systems. Specialized in RESTful APIs, microservices, and cloud
-                    architecture with expertise in Kafka, Redis, and AWS.</p>
-                <div class="hero-actions">
-                    <a href="#contact" class="btn-primary">
-                        <i class="fas fa-paper-plane"></i> Get In Touch
+                
+                <!-- Main Heading -->
+                <h1 class="hero-title reveal-up" style="--delay: 0.1s">
+                    <span class="title-line">Crafting Scalable</span>
+                    <span class="title-line gradient-text">Backend Systems</span>
+                </h1>
+                
+                <!-- Role -->
+                <div class="hero-role reveal-up" style="--delay: 0.2s">
+                    <span class="role-tag">Java Spring Boot Developer</span>
+                    <span class="role-divider"></span>
+                    <span class="role-tag">Microservices Architect</span>
+                </div>
+                
+                <!-- Description -->
+                <p class="hero-description reveal-up" style="--delay: 0.3s">
+                    2+ years building production-grade financial systems with Java, Spring Boot, and Kafka. 
+                    Specialized in high-performance REST APIs and event-driven architecture.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="hero-cta reveal-up" style="--delay: 0.4s">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Get in Touch</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#projects" class="btn-secondary">
-                        <i class="fas fa-code"></i> Discover My Work
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>View Projects</span>
+                        <i class="fas fa-folder-open"></i>
+                    </a>
+                    <a href="Mohammed_Fazil_Java_SpringBoot_Developer_09_07_26.pdf" download class="btn btn-secondary">
+                        <span>Download Resume</span>
+                        <i class="fas fa-download"></i>
                     </a>
                 </div>
-
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="stat-number" data-count="2">0</div>
-                        <div class="stat-label">Years Experience</div>
+                
+                <!-- Stats -->
+                <div class="hero-stats reveal-up" style="--delay: 0.5s">
+                    <div class="stat-item">
+                        <span class="stat-value">2+</span>
+                        <span class="stat-label">Years Experience</span>
                     </div>
-                    <div class="hero-stat">
-                        <div class="stat-number" data-count="3">0</div>
-                        <div class="stat-label">Major Projects</div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value" data-count="3">0</span>
+                        <span class="stat-label">Major Projects</span>
                     </div>
-                    <div class="hero-stat">
-                        <div class="stat-number" data-count="5">0</div>
-                        <div class="stat-label">Certifications</div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value" data-count="5">0</span>
+                        <span class="stat-label">Certifications</span>
                     </div>
                 </div>
             </div>
+            
+            <!-- Hero Visual -->
+            <div class="hero-visual reveal-up" style="--delay: 0.3s">
+                <div class="visual-container">
+                    <!-- Floating Tech Icons -->
+                    <div class="floating-icons">
+                        <div class="float-icon" style="--i: 1"><i class="fab fa-java"></i></div>
+                        <div class="float-icon" style="--i: 2"><i class="fas fa-leaf"></i></div>
+                        <div class="float-icon" style="--i: 3"><i class="fab fa-docker"></i></div>
+                        <div class="float-icon" style="--i: 4"><i class="fab fa-aws"></i></div>
+                        <div class="float-icon" style="--i: 5"><i class="fas fa-database"></i></div>
+                        <div class="float-icon" style="--i: 6"><i class="fas fa-code-branch"></i></div>
+                    </div>
+                    
+                    <!-- 3D Tech Cube -->
+                    <div class="tech-cube-container">
+                        <div class="tech-cube">
+                            <div class="cube-face cube-front"><i class="fab fa-java"></i></div>
+                            <div class="cube-face cube-back"><i class="fab fa-docker"></i></div>
+                            <div class="cube-face cube-right"><i class="fas fa-leaf"></i></div>
+                            <div class="cube-face cube-left"><i class="fab fa-aws"></i></div>
+                            <div class="cube-face cube-top"><i class="fas fa-database"></i></div>
+                            <div class="cube-face cube-bottom"><i class="fab fa-git-alt"></i></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Performance Cards -->
+                    <div class="perf-card perf-card-1">
+                        <i class="fas fa-bolt"></i>
+                        <div class="perf-content">
+                            <span class="perf-value">40%</span>
+                            <span class="perf-label">Faster Response</span>
+                        </div>
+                    </div>
+                    <div class="perf-card perf-card-2">
+                        <i class="fas fa-server"></i>
+                        <div class="perf-content">
+                            <span class="perf-value">30%</span>
+                            <span class="perf-label">Load Reduced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator reveal-up" style="--delay: 0.6s">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section about">
         <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-label">About Me</div>
-                <h2 class="section-title">Driving Innovation<br>Through Excellence</h2>
+            <div class="section-header">
+                <span class="section-tag reveal-up">About Me</span>
+                <h2 class="section-title reveal-up" style="--delay: 0.1s">
+                    Passionate About Building
+                    <span class="gradient-text">Exceptional Systems</span>
+                </h2>
             </div>
-            <div class="about-grid">
-                <div class="about-text animate-on-scroll">
-                    <p>With 2 years of professional experience at Geojit Technologies, I specialize in building
-                        scalable, high-performance backend systems. My passion lies in developing robust RESTful APIs,
-                        designing efficient database solutions, and architecting event-driven microservices.</p>
-                    <p>I bring a strong problem-solving mindset with expertise in Java, Spring Boot, SQL, Kafka, Redis,
-                        and AWS. My B.Tech in Electronics and Communication Engineering provides a solid foundation for
-                        system-level thinking and performance optimization in real-world applications.</p>
+            
+            <div class="about-content">
+                <div class="about-text reveal-up" style="--delay: 0.2s">
+                    <p class="about-intro">
+                        I'm <strong>Mohammed Fazil</strong>, a Backend Engineer with 2+ years of professional experience 
+                        at <span class="highlight">Geojit Technologies</span> building scalable financial systems.
+                    </p>
+                    <p>
+                        My passion lies in architecting robust REST APIs, designing event-driven microservices, 
+                        and optimizing database systems for high-performance applications. I combine strong 
+                        problem-solving skills with expertise in Java, Spring Boot, SQL, Kafka, Redis, and AWS.
+                    </p>
+                    <p>
+                        I'm committed to writing clean code, following SOLID principles, and delivering 
+                        production-grade solutions that handle real-world scale and complexity.
+                    </p>
                 </div>
-                <div class="skills-grid animate-on-scroll">
-                    <div class="skill-item">
-                        <i class="fab fa-java"></i>
-                        <p>Java & Spring Boot</p>
+                
+                <div class="about-cards">
+                    <div class="info-card reveal-up" style="--delay: 0.3s">
+                        <div class="card-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Current Role</span>
+                            <span class="card-value">Junior Software Engineer</span>
+                            <span class="card-sub">Geojit Technologies</span>
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-cloud"></i>
-                        <p>AWS Cloud</p>
+                    
+                    <div class="info-card reveal-up" style="--delay: 0.4s">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Education</span>
+                            <span class="card-value">B.Tech ECE</span>
+                            <span class="card-sub">MES College of Engineering</span>
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-stream"></i>
-                        <p>Kafka & Redis</p>
+                    
+                    <div class="info-card reveal-up" style="--delay: 0.5s">
+                        <div class="card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Location</span>
+                            <span class="card-value">Kochi, Kerala</span>
+                            <span class="card-sub">India</span>
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fab fa-docker"></i>
-                        <p>Docker & Kubernetes</p>
+                    
+                    <div class="info-card reveal-up" style="--delay: 0.6s">
+                        <div class="card-icon">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Focus Areas</span>
+                            <span class="card-value">Backend & Cloud</span>
+                            <span class="card-sub">Microservices Architecture</span>
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fab fa-git-alt"></i>
-                        <p>Git & CI/CD</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">Technical Expertise</span>
+                <h2 class="section-title reveal-up" style="--delay: 0.1s">
+                    Technologies I
+                    <span class="gradient-text">Work With</span>
+                </h2>
+                <p class="section-subtitle reveal-up" style="--delay: 0.2s">
+                    A comprehensive toolkit for building scalable, production-ready systems
+                </p>
+            </div>
+            
+            <div class="skills-grid">
+                <!-- Backend & Core -->
+                <div class="skill-card reveal-up" style="--delay: 0.1s">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>Backend & Core</h3>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-database"></i>
-                        <p>MSSQL Database</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fab fa-java"></i> Java</span>
+                        <span class="skill-tag"><i class="fas fa-leaf"></i> Spring Boot</span>
+                        <span class="skill-tag"><i class="fas fa-cloud"></i> Spring Cloud</span>
+                        <span class="skill-tag"><i class="fas fa-exchange-alt"></i> REST APIs</span>
+                        <span class="skill-tag"><i class="fas fa-cubes"></i> Microservices</span>
+                        <span class="skill-tag"><i class="fas fa-layer-group"></i> SOLID</span>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-cogs"></i>
-                        <p>Microservices</p>
+                </div>
+                
+                <!-- Databases & ORM -->
+                <div class="skill-card reveal-up" style="--delay: 0.2s">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Databases & ORM</h3>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-code-branch"></i>
-                        <p>RESTful APIs</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fas fa-database"></i> MSSQL</span>
+                        <span class="skill-tag"><i class="fas fa-snowflake"></i> Snowflake</span>
+                        <span class="skill-tag"><i class="fas fa-table"></i> Hibernate</span>
+                        <span class="skill-tag"><i class="fas fa-link"></i> JPA</span>
+                        <span class="skill-tag"><i class="fas fa-tachometer-alt"></i> Query Optimization</span>
+                        <span class="skill-tag"><i class="fas fa-network-wired"></i> Connection Pooling</span>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-vial"></i>
-                        <p>JUnit & Testing</p>
+                </div>
+                
+                <!-- Messaging & Caching -->
+                <div class="skill-card reveal-up" style="--delay: 0.3s">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-stream"></i>
+                        </div>
+                        <h3>Messaging & Caching</h3>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <p>Security & JWT</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fas fa-wind"></i> Apache Kafka</span>
+                        <span class="skill-tag"><i class="fas fa-bolt"></i> Redis</span>
+                        <span class="skill-tag"><i class="fas fa-broadcast-tower"></i> Event Streaming</span>
+                        <span class="skill-tag"><i class="fas fa-envelope"></i> Message Queues</span>
+                        <span class="skill-tag"><i class="fas fa-memory"></i> Cache Strategies</span>
+                        <span class="skill-tag"><i class="fas fa-gem"></i> Garnet</span>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-sitemap"></i>
-                        <p>System Design</p>
+                </div>
+                
+                <!-- Cloud & DevOps -->
+                <div class="skill-card reveal-up" style="--delay: 0.4s">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>Cloud & DevOps</h3>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <p>Performance Tuning</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fab fa-aws"></i> AWS</span>
+                        <span class="skill-tag"><i class="fab fa-microsoft"></i> Azure</span>
+                        <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
+                        <span class="skill-tag"><i class="fas fa-dharmachakra"></i> Kubernetes</span>
+                        <span class="skill-tag"><i class="fas fa-infinity"></i> CI/CD</span>
+                        <span class="skill-tag"><i class="fab fa-github"></i> GitHub Actions</span>
+                    </div>
+                </div>
+                
+                <!-- Monitoring & Testing -->
+                <div class="skill-card reveal-up" style="--delay: 0.5s">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Monitoring & Testing</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fas fa-vial"></i> JUnit</span>
+                        <span class="skill-tag"><i class="fas fa-flask"></i> Mockito</span>
+                        <span class="skill-tag"><i class="fas fa-bug"></i> SonarQube</span>
+                        <span class="skill-tag"><i class="fas fa-fire"></i> Prometheus</span>
+                        <span class="skill-tag"><i class="fas fa-check-double"></i> TDD</span>
+                        <span class="skill-tag"><i class="fas fa-ruler"></i> Micrometer</span>
+                    </div>
+                </div>
+                
+                <!-- Tools & Practices -->
+                <div class="skill-card reveal-up" style="--delay: 0.6s">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Tools & Practices</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="skill-tag"><i class="fas fa-box"></i> Maven</span>
+                        <span class="skill-tag"><i class="fas fa-paper-plane"></i> Postman</span>
+                        <span class="skill-tag"><i class="fas fa-book"></i> Swagger</span>
+                        <span class="skill-tag"><i class="fas fa-key"></i> JWT Security</span>
+                        <span class="skill-tag"><i class="fas fa-puzzle-piece"></i> Design Patterns</span>
                     </div>
                 </div>
             </div>
@@ -1340,110 +384,102 @@
     <!-- Experience Section -->
     <section id="experience" class="section experience">
         <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-label">Experience & Education</div>
-                <h2 class="section-title">Professional Journey</h2>
-                <p class="section-subtitle">A timeline of my professional experience and academic background.</p>
+            <div class="section-header">
+                <span class="section-tag reveal-up">Career Journey</span>
+                <h2 class="section-title reveal-up" style="--delay: 0.1s">
+                    Experience &
+                    <span class="gradient-text">Education</span>
+                </h2>
             </div>
-            <div class="timeline animate-on-scroll">
-                <div class="timeline-item">
-                    <div class="timeline-date">May 2024 - Present</div>
-                    <div class="timeline-content">
-                        <h3>Junior Software Engineer</h3>
-                        <h4>Geojit Technologies, Kochi</h4>
-                        <p>Developing and maintaining scalable backend systems for financial applications, focusing on
-                            performance optimization and clean architecture. Working with cutting-edge technologies to
-                            build robust, production-grade solutions with enterprise-level security and reliability.</p>
-                        <ul>
-                            <li>Designed and developed secure RESTful APIs using Java and Spring Boot with JWT
-                                authentication</li>
-                            <li>Implemented event-driven microservices architecture using Apache Kafka and Docker
-                                containers</li>
-                            <li>Optimized MS SQL database queries and implemented Redis caching strategies for
-                                high-performance data access</li>
-                            <li>Deployed applications using Docker/Kubernetes orchestration in AWS cloud environment
-                            </li>
-                            <li>Established CI/CD pipelines using Git for automated testing and deployment</li>
-                            <li>Implemented comprehensive JUnit testing suites ensuring 85%+ code coverage</li>
-                            <li>Performed system design and performance tuning, improving response times by 40%</li>
-                            <li>Applied security best practices including JWT token management and API security
-                                protocols</li>
+            
+            <div class="timeline">
+                <!-- Current Role -->
+                <div class="timeline-item reveal-up" style="--delay: 0.2s">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div class="timeline-badge">Current</div>
+                            <span class="timeline-date">May 2024 - Present</span>
+                        </div>
+                        <h3 class="timeline-title">Junior Software Engineer</h3>
+                        <h4 class="timeline-company">
+                            <i class="fas fa-building"></i>
+                            Geojit Technologies, Kochi
+                        </h4>
+                        <p class="timeline-desc">
+                            Developing and maintaining scalable backend systems for enterprise financial applications 
+                            with focus on performance optimization and clean architecture.
+                        </p>
+                        <ul class="timeline-highlights">
+                            <li>Designed secure RESTful APIs with Spring Boot and JWT authentication</li>
+                            <li>Implemented event-driven microservices using Apache Kafka</li>
+                            <li>Optimized MSSQL queries and Redis caching - 30% load reduction</li>
+                            <li>Containerized services with Docker, deployed on AWS with Kubernetes</li>
+                            <li>Improved API response times by 40% through performance tuning</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span>Java</span>
+                            <span>Spring Boot</span>
+                            <span>Kafka</span>
+                            <span>Redis</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Training -->
+                <div class="timeline-item reveal-up" style="--delay: 0.3s">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-date">July 2023 - March 2024</span>
+                        </div>
+                        <h3 class="timeline-title">Java Full Stack Development Training</h3>
+                        <h4 class="timeline-company">
+                            <i class="fas fa-graduation-cap"></i>
+                            QSpiders - Software Training Institute
+                        </h4>
+                        <p class="timeline-desc">
+                            Intensive full-stack development program with focus on Java ecosystem and industry practices.
+                        </p>
+                        <ul class="timeline-highlights">
+                            <li>Mastered Java, Spring Boot, and OOP design principles</li>
+                            <li>Developed expertise in MSSQL and database optimization</li>
+                            <li>Learned Docker, CI/CD, and Git workflows</li>
+                            <li>Built secure applications with JWT and Spring Security</li>
                         </ul>
                     </div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">July 2023 - March 2024</div>
-                    <div class="timeline-content">
-                        <h3>Java Full Stack Development Training</h3>
-                        <h4>QSpiders - Software Testing Training Institute</h4>
-                        <p>Intensive full-stack development program focusing on Java ecosystem, modern frameworks, and
-                            industry best practices. Gained hands-on experience with enterprise-level application
-                            development, DevOps practices, and security implementations.</p>
-                        <ul>
-                            <li>Mastered Java programming, Spring Boot framework, and object-oriented design principles
-                            </li>
-                            <li>Developed expertise in MS SQL database design, optimization, and stored procedures</li>
-                            <li>Learned Docker containerization, CI/CD pipelines, and Git version control workflows</li>
-                            <li>Implemented JUnit testing frameworks and test-driven development methodologies</li>
-                            <li>Built secure web applications with JWT authentication and Spring Security</li>
-                            <li>Practiced system design principles and performance optimization techniques</li>
+                
+                <!-- Education -->
+                <div class="timeline-item reveal-up" style="--delay: 0.4s">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-date">2019 - 2023</span>
+                        </div>
+                        <h3 class="timeline-title">B.Tech in Electronics & Communication Engineering</h3>
+                        <h4 class="timeline-company">
+                            <i class="fas fa-university"></i>
+                            MES College of Engineering, Kuttippuram
+                        </h4>
+                        <p class="timeline-desc">
+                            Strong foundation in engineering principles and system architecture that translate seamlessly to software development.
+                        </p>
+                        <ul class="timeline-highlights">
+                            <li>Deep understanding of system architecture and design</li>
+                            <li>Strong mathematical and analytical problem-solving</li>
+                            <li>Project management and team collaboration skills</li>
                         </ul>
                     </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">2019 - 2023</div>
-                    <div class="timeline-content">
-                        <h3>Bachelor's Degree in Electronics and Communication Engineering</h3>
-                        <h4>MES College of Engineering, Kuttippuram</h4>
-                        <p>Graduated with a strong foundation in engineering principles and problem-solving
-                            methodologies. Developed analytical thinking and system design skills that seamlessly
-                            translate to software development.</p>
-                        <ul>
-                            <li>Gained deep understanding of system architecture and design principles</li>
-                            <li>Developed strong mathematical and analytical problem-solving skills</li>
-                            <li>Learned project management and team collaboration through group projects</li>
-                            <li>Built foundation for transitioning into software development career</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="section certifications">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-label">Certifications</div>
-                <h2 class="section-title">Professional Certifications</h2>
-            </div>
-            <div class="cert-grid animate-on-scroll">
-                <div class="cert-card">
-                    <i class="fab fa-java"></i>
-                    <h4>Java: Advanced Concepts</h4>
-                    <p>High-Performance Development</p>
-                </div>
-                <div class="cert-card">
-                    <i class="fas fa-database"></i>
-                    <h4>Data Platforms</h4>
-                    <p>Spark to Snowflake</p>
-                </div>
-                <div class="cert-card">
-                    <i class="fab fa-github"></i>
-                    <h4>AI Pair Programming</h4>
-                    <p>GitHub Copilot</p>
-                </div>
-                <div class="cert-card">
-                    <i class="fab fa-microsoft"></i>
-                    <h4>Microsoft Copilot</h4>
-                    <p>Productivity Enhancement</p>
-                </div>
-                <div class="cert-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h4>NISM-Series-VII</h4>
-                    <p>Securities Operations & Risk Management</p>
                 </div>
             </div>
         </div>
@@ -1452,76 +488,202 @@
     <!-- Projects Section -->
     <section id="projects" class="section projects">
         <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-label">Projects</div>
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Production-grade systems handling real-world financial data and transactions.</p>
+            <div class="section-header">
+                <span class="section-tag reveal-up">Showcase</span>
+                <h2 class="section-title reveal-up" style="--delay: 0.1s">
+                    Featured
+                    <span class="gradient-text">Projects</span>
+                </h2>
+                <p class="section-subtitle reveal-up" style="--delay: 0.2s">
+                    Production-grade systems handling real-world financial data
+                </p>
             </div>
-            <div class="projects-grid animate-on-scroll">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/logo/sparc-logo.png"
-                            alt="SPARC Trading Logo">
-                    </div>
+            
+            <div class="projects-grid">
+                <!-- SPARC Trading -->
+                <div class="project-card reveal-up" style="--delay: 0.2s">
+                    <div class="project-glow"></div>
                     <div class="project-content">
-                        <h3>SPARC-Trading BackOffice System</h3>
-                        <p>Scalable backend architecture for real-time financial data processing, featuring
-                            high-performance APIs and event-driven microservices for trading operations.</p>
-                        <div class="project-tags">
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">Java</span>
-                            <span class="tag">Kafka</span>
-                            <span class="tag">Redis</span>
-                            <span class="tag">Sql</span>
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-tag">Enterprise</span>
+                            </div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-chart-line"></i> Performance Metrics</a>
-                            <a href="#" class="project-link"><i class="fas fa-info-circle"></i> Architecture Details</a>
+                        <h3 class="project-title">SPARC Trading BackOffice</h3>
+                        <p class="project-desc">
+                            Scalable backend architecture for real-time financial data processing with 
+                            high-performance APIs and event-driven microservices.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-icon"><i class="fas fa-project-diagram"></i></span>
+                                <span class="metric-text">Event-Driven Architecture</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon"><i class="fas fa-bolt"></i></span>
+                                <span class="metric-text">40% Faster Response</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon"><i class="fas fa-server"></i></span>
+                                <span class="metric-text">30% Load Reduction</span>
+                            </div>
+                        </div>
+                        <div class="project-tech">
+                            <span>Spring Boot</span>
+                            <span>Java</span>
+                            <span>Kafka</span>
+                            <span>Redis</span>
+                            <span>MSSQL</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/logo/fundsgenie.svg" alt="FundsGenie Logo">
-                    </div>
+                
+                <!-- FundsGenie -->
+                <div class="project-card reveal-up" style="--delay: 0.3s">
+                    <div class="project-glow"></div>
                     <div class="project-content">
-                        <h3>FundsGenie - Mutual Fund Platform</h3>
-                        <p>Geojit's comprehensive mutual fund investment platform providing instant access to mutual
-                            funds information, portfolio management, and real-time investment tracking.</p>
-                        <div class="project-tags">
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">Java</span>
-                            <span class="tag">Kafka</span>
-                            <span class="tag">Redis</span>
-                            <span class="tag">Kubernetes</span>
-                            <span class="tag">OpenShift</span>
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-tag">Platform</span>
+                            </div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-chart-pie"></i> Investment Analytics</a>
-                            <a href="#" class="project-link"><i class="fas fa-coins"></i> Fund Details</a>
+                        <h3 class="project-title">FundsGenie - Mutual Fund Platform</h3>
+                        <p class="project-desc">
+                            Geojit's comprehensive mutual fund investment platform providing instant 
+                            access to fund information and portfolio management.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-icon"><i class="fas fa-layer-group"></i></span>
+                                <span class="metric-text">Enterprise Scale</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon"><i class="fas fa-database"></i></span>
+                                <span class="metric-text">Connection Pooling</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon"><i class="fas fa-tachometer-alt"></i></span>
+                                <span class="metric-text">High Load Ready</span>
+                            </div>
+                        </div>
+                        <div class="project-tech">
+                            <span>Spring Boot</span>
+                            <span>Kafka</span>
+                            <span>Redis</span>
+                            <span>Kubernetes</span>
+                            <span>OpenShift</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/logo/kafka-logo.png" alt="Apache Kafka Logo">
-                    </div>
+                
+                <!-- Event-Driven Architecture -->
+                <div class="project-card reveal-up" style="--delay: 0.4s">
+                    <div class="project-glow"></div>
                     <div class="project-content">
-                        <h3>Event-Driven Microservices</h3>
-                        <p>Distributed system architecture using Kafka for real-time data streaming and event
-                            processing. Built for reliability and horizontal scalability.</p>
-                        <div class="project-tags">
-                            <span class="tag">Microservices</span>
-                            <span class="tag">Apache Kafka</span>
-                            <span class="tag">Event Sourcing</span>
-                            <span class="tag">Docker</span>
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-stream"></i>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-tag">Architecture</span>
+                            </div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-stream"></i> Architecture</a>
-                            <a href="#" class="project-link"><i class="fas fa-cogs"></i> Implementation</a>
+                        <h3 class="project-title">Event-Driven Microservices</h3>
+                        <p class="project-desc">
+                            Distributed system architecture using Kafka for real-time data streaming 
+                            and event processing with horizontal scalability.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-icon"><i class="fas fa-code-branch"></i></span>
+                                <span class="metric-text">Event Sourcing</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon"><i class="fas fa-expand-arrows-alt"></i></span>
+                                <span class="metric-text">Horizontal Scaling</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon"><i class="fas fa-shield-alt"></i></span>
+                                <span class="metric-text">Production Grade</span>
+                            </div>
                         </div>
+                        <div class="project-tech">
+                            <span>Microservices</span>
+                            <span>Apache Kafka</span>
+                            <span>Event Sourcing</span>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section certifications">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">Credentials</span>
+                <h2 class="section-title reveal-up" style="--delay: 0.1s">
+                    Professional
+                    <span class="gradient-text">Certifications</span>
+                </h2>
+            </div>
+            
+            <div class="cert-grid">
+                <div class="cert-card reveal-up" style="--delay: 0.1s">
+                    <div class="cert-icon">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>Java: Advanced Concepts</h4>
+                        <p>High-Performance Development</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card reveal-up" style="--delay: 0.15s">
+                    <div class="cert-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>Data Platforms</h4>
+                        <p>Spark to Snowflake</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card reveal-up" style="--delay: 0.2s">
+                    <div class="cert-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>AI Pair Programming</h4>
+                        <p>GitHub Copilot</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card reveal-up" style="--delay: 0.25s">
+                    <div class="cert-icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>Microsoft Copilot</h4>
+                        <p>Productivity Enhancement</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card reveal-up" style="--delay: 0.3s">
+                    <div class="cert-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>NISM-Series-VII</h4>
+                        <p>Securities Operations & Risk</p>
                     </div>
                 </div>
             </div>
@@ -1531,58 +693,104 @@
     <!-- Contact Section -->
     <section id="contact" class="section contact">
         <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-label">Contact</div>
-                <h2 class="section-title">Let's Work Together</h2>
-                <p class="section-subtitle">Ready to discuss your next project or opportunity? I'd love to hear from you.</p>
+            <div class="section-header">
+                <span class="section-tag reveal-up">Get In Touch</span>
+                <h2 class="section-title reveal-up" style="--delay: 0.1s">
+                    Let's Build Something
+                    <span class="gradient-text">Amazing Together</span>
+                </h2>
+                <p class="section-subtitle reveal-up" style="--delay: 0.2s">
+                    Ready to discuss your next project? I'd love to hear from you.
+                </p>
             </div>
-            <div class="contact-content animate-on-scroll">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>Ready to discuss your next project or opportunity? I'd love to hear from you and explore how we
-                        can create something amazing together.</p>
-
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>mohammedfazil6652@gmail.com</span>
+            
+            <div class="contact-grid">
+                <div class="contact-info reveal-up" style="--delay: 0.2s">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out through any of these channels.</p>
+                    
+                    <div class="contact-items">
+                        <a href="mailto:mohammedfazil6652@gmail.com" class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">mohammedfazil6652@gmail.com</span>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:+917558016652" class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-value">+91-7558016652</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.linkedin.com/in/mohammed-fazil-9b6571228" target="_blank" class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">LinkedIn</span>
+                                <span class="contact-value">mohammed-fazil-9b6571228</span>
+                            </div>
+                        </a>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Location</span>
+                                <span class="contact-value">Kochi, Kerala, India</span>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+91-7558016652</span>
-                    </div>
-
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <span>linkedin.com/in/mohammed-fazil-9b6571228</span>
-                    </div>
-
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Kochi, Kerala, India</span>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/mohammed-fazil-9b6571228" target="_blank" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:mohammedfazil6652@gmail.com" class="social-link" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
                 </div>
-
-                <!-- Option 1: Formspree Integration (Recommended) -->
-                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkovzggv" method="POST">
+                
+                <form class="contact-form reveal-up" style="--delay: 0.3s" id="contactForm" action="https://formspree.io/f/xkovzggv" method="POST">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
                     </div>
+                    
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
                     </div>
+                    
                     <div class="form-group">
-                        <input type="text" name="subject" placeholder="Subject" required>
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Project Discussion" required>
                     </div>
+                    
                     <div class="form-group">
-                        <textarea name="message" placeholder="Your Message" required></textarea>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn" id="submitBtn">
-                        <span class="btn-text"><i class="fas fa-paper-plane"></i> Send Message</span>
-                        <span class="btn-loading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Sending...
-                        </span>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                        <span class="btn-loading"><i class="fas fa-spinner fa-spin"></i></span>
                     </button>
+                    
                     <div class="form-status" id="formStatus"></div>
                 </form>
             </div>
@@ -1592,318 +800,18 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <p>&copy; 2026 Mohammed Fazil T. All rights reserved. Crafted with passion and precision.</p>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/mohammed-fazil-9b6571228" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" title="AWS"><i class="fab fa-aws"></i></a>
-                    <a href="mailto:mohammedfazil6652@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mohammed Fazil T. Crafted with passion and precision.</p>
             </div>
         </div>
     </footer>
+    
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-    <script>
-        // ===== PARTICLES CANVAS =====
-        (function() {
-            const canvas = document.getElementById('particles-canvas');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            let mouse = { x: null, y: null };
-            let animId;
-
-            function resize() {
-                canvas.width = canvas.parentElement.offsetWidth;
-                canvas.height = canvas.parentElement.offsetHeight;
-            }
-
-            function createParticles() {
-                particles = [];
-                const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
-                for (let i = 0; i < count; i++) {
-                    particles.push({
-                        x: Math.random() * canvas.width,
-                        y: Math.random() * canvas.height,
-                        vx: (Math.random() - 0.5) * 0.4,
-                        vy: (Math.random() - 0.5) * 0.4,
-                        r: Math.random() * 1.5 + 0.5,
-                        alpha: Math.random() * 0.5 + 0.1
-                    });
-                }
-            }
-
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach((p, i) => {
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(96, 165, 250, ${p.alpha})`;
-                    ctx.fill();
-
-                    // Connect nearby particles
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dx = p.x - particles[j].x;
-                        const dy = p.y - particles[j].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 150) {
-                            ctx.beginPath();
-                            ctx.moveTo(p.x, p.y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(96, 165, 250, ${0.06 * (1 - dist / 150)})`;
-                            ctx.lineWidth = 0.5;
-                            ctx.stroke();
-                        }
-                    }
-
-                    // Mouse interaction
-                    if (mouse.x !== null) {
-                        const dx = p.x - mouse.x;
-                        const dy = p.y - mouse.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 200) {
-                            ctx.beginPath();
-                            ctx.moveTo(p.x, p.y);
-                            ctx.lineTo(mouse.x, mouse.y);
-                            ctx.strokeStyle = `rgba(167, 139, 250, ${0.15 * (1 - dist / 200)})`;
-                            ctx.lineWidth = 0.5;
-                            ctx.stroke();
-                        }
-                    }
-                });
-                animId = requestAnimationFrame(draw);
-            }
-
-            canvas.addEventListener('mousemove', (e) => {
-                const rect = canvas.getBoundingClientRect();
-                mouse.x = e.clientX - rect.left;
-                mouse.y = e.clientY - rect.top;
-            });
-
-            canvas.addEventListener('mouseleave', () => {
-                mouse.x = null;
-                mouse.y = null;
-            });
-
-            window.addEventListener('resize', () => { resize(); createParticles(); });
-            resize();
-            createParticles();
-            draw();
-        })();
-
-        // ===== SCROLL PROGRESS =====
-        window.addEventListener('scroll', function() {
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            document.getElementById('scrollProgress').style.width = progress + '%';
-        });
-
-        // ===== NAVBAR =====
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // ===== ACTIVE NAV LINK =====
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link:not(.nav-cta)');
-
-        function setActiveNav() {
-            const scrollY = window.scrollY + 120;
-            sections.forEach(section => {
-                const top = section.offsetTop;
-                const height = section.offsetHeight;
-                const id = section.getAttribute('id');
-                if (scrollY >= top && scrollY < top + height) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === '#' + id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }
-        window.addEventListener('scroll', setActiveNav);
-
-        // ===== HAMBURGER MENU =====
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        const navOverlay = document.getElementById('navOverlay');
-
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        }
-
-        hamburger.addEventListener('click', toggleMenu);
-        navOverlay.addEventListener('click', toggleMenu);
-
-        // Close menu on link click
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navMenu.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
-        });
-
-        // ===== SMOOTH SCROLL =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // ===== ANIMATE ON SCROLL =====
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // ===== COUNTER ANIMATION =====
-        function animateCounters() {
-            document.querySelectorAll('.stat-number').forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                const duration = 1500;
-                const start = performance.now();
-                const initial = 0;
-
-                function update(now) {
-                    const elapsed = now - start;
-                    const progress = Math.min(elapsed / duration, 1);
-                    // Ease out cubic
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    counter.textContent = Math.floor(initial + (target - initial) * eased) + '+';
-                    if (progress < 1) requestAnimationFrame(update);
-                }
-                requestAnimationFrame(update);
-            });
-        }
-
-        const heroStatsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    heroStatsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const heroStats = document.querySelector('.hero-stats');
-        if (heroStats) heroStatsObserver.observe(heroStats);
-
-        // ===== FORM SUBMISSION =====
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            handleFormSubmission(this);
-        });
-
-        async function handleFormSubmission(form) {
-            const submitBtn = document.getElementById('submitBtn');
-            const formStatus = document.getElementById('formStatus');
-            const btnText = submitBtn.querySelector('.btn-text');
-            const btnLoading = submitBtn.querySelector('.btn-loading');
-
-            btnText.style.display = 'none';
-            btnLoading.style.display = 'inline-flex';
-            submitBtn.disabled = true;
-            formStatus.style.display = 'none';
-
-            try {
-                if (form.action.includes('formspree.io') && !form.action.includes('YOUR_FORM_ID')) {
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: { 'Accept': 'application/json' }
-                    });
-
-                    if (response.ok) {
-                        showFormStatus('success', 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!');
-                        form.reset();
-                        return;
-                    } else {
-                        throw new Error('Formspree submission failed');
-                    }
-                }
-
-                showFormStatus('info', 'Demo Mode: Please configure Formspree or EmailJS to enable email sending. Your message details have been logged to console.');
-                console.log('Contact Form Submission:', {
-                    name: form.name.value,
-                    email: form.email.value,
-                    subject: form.subject.value,
-                    message: form.message.value,
-                    timestamp: new Date().toISOString()
-                });
-
-            } catch (error) {
-                console.error('Form submission error:', error);
-                showFormStatus('error', 'Sorry, there was an error sending your message. Please try again or contact me directly at mohammedfazil6652@gmail.com');
-            } finally {
-                btnText.style.display = 'inline-flex';
-                btnLoading.style.display = 'none';
-                submitBtn.disabled = false;
-            }
-        }
-
-        function showFormStatus(type, message) {
-            const formStatus = document.getElementById('formStatus');
-            formStatus.className = `form-status ${type}`;
-            formStatus.textContent = message;
-            formStatus.style.display = 'block';
-
-            if (type === 'success' || type === 'info') {
-                setTimeout(() => { formStatus.style.display = 'none'; }, 10000);
-            }
-        }
-
-        function validateForm(form) {
-            const email = form.email.value;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailRegex.test(email)) {
-                showFormStatus('error', 'Please enter a valid email address.');
-                return false;
-            }
-
-            if (form.message.value.length < 10) {
-                showFormStatus('error', 'Please enter a message with at least 10 characters.');
-                return false;
-            }
-
-            return true;
-        }
-    </script>
+    <!-- External JavaScript -->
+    <script src="js/script.js"></script>
 </body>
-
 </html>
